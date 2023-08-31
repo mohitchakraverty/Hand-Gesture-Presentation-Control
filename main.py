@@ -4,7 +4,7 @@ import os
 import numpy as np
 
 # Parameters
-width, height = 1280, 720
+width, height = 1000, 520
 gestureThreshold = 300
 folderPath = "Presentation"
 
@@ -51,7 +51,7 @@ while True:
         cx, cy = hand["center"]
         lmList = hand["lmList"]  # List of 21 Landmark points
         fingers = detectorHand.fingersUp(hand)  # List of which fingers are up
-
+        print(fingers)
         # Constrain values for easier drawing
         xVal = int(np.interp(lmList[8][0], [width // 2, width], [0, width]))
         yVal = int(np.interp(lmList[8][1], [150, height-150], [0, height]))
@@ -94,6 +94,7 @@ while True:
             if annotations:
                 annotations.pop(-1)
                 annotationNumber -= 1
+                print(annotationNumber)
                 buttonPressed = True
 
     else:
